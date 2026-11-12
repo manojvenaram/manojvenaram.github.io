@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manoj Choudhary V | AI Engineer & Systems Builder</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.8; }
+    }
+    .floating { animation: float 6s ease-in-out infinite; }
+    .pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+    .glass { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .glass-card { background: rgba(30, 41, 59, 0.45); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.07); }
+    .glass-card:hover { border-color: rgba(99, 102, 241, 0.4); box-shadow: 0 0 25px rgba(99, 102, 241, 0.15); }
+    .glow-purple { box-shadow: 0 0 30px rgba(168, 85, 247, 0.25); }
+    .glow-indigo { box-shadow: 0 0 30px rgba(99, 102, 241, 0.25); }
+    .custom-scroll::-webkit-scrollbar { width: 5px; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+  </style>
+</head>
+<body class="bg-[#07090E] text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-indigo-500 selection:text-white font-sans">
+
+  <!-- Interactive Canvas Background -->
+  <canvas id="particleCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- Ambient Light Orbs -->
+  <div class="fixed top-10 left-1/4 w-96 h-96 bg-indigo-600/15 rounded-full blur-3xl pointer-events-none pulse-glow"></div>
+  <div class="fixed bottom-20 right-1/4 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl pointer-events-none pulse-glow" style="animation-delay: 1.5s;"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="fixed top-4 inset-x-4 max-w-5xl mx-auto z-50 glass rounded-2xl px-6 py-3.5 flex items-center justify-between">
+    <a href="#" class="font-extrabold text-lg tracking-tight flex items-center gap-2">
+      <span class="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white text-sm font-bold shadow-md shadow-indigo-500/30">M</span>
+      <span class="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">Manoj Choudhary V</span>
+    </a>
+    <div class="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-300">
+      <a href="#about" class="hover:text-indigo-400 transition">About</a>
+      <a href="#projects" class="hover:text-indigo-400 transition">Projects</a>
+      <a href="#skills" class="hover:text-indigo-400 transition">Skills</a>
+      <a href="#ask-ai" class="text-indigo-400 hover:text-indigo-300 flex items-center gap-1.5 font-bold">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Ask Manoj AI
+      </a>
+      <a href="#contact" class="hover:text-indigo-400 transition">Contact</a>
+    </div>
+    <a href="https://github.com/manojvenaram" target="_blank" class="px-4 py-1.5 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white transition flex items-center gap-2 shadow-sm">
+      <span>GitHub Profile</span> &rarr;
+    </a>
+  </nav>
+
+  <main class="relative z-10 max-w-5xl mx-auto px-4 pt-32 pb-24 space-y-28">
+
+    <!-- HERO SECTION -->
+    <section id="about" class="pt-10 flex flex-col items-center text-center space-y-6">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold glass text-emerald-400 border-emerald-500/30 shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        Available for AI Engineering, Agentic Systems & Hackathons
+      </div>
+
+      <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-tight max-w-3xl">
+        Architecting <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Intelligent Agents</span> & Distributed Systems.
+      </h1>
+
+      <p class="text-slate-400 text-sm md:text-base max-w-2xl leading-relaxed">
+        Hi, I'm <strong class="text-white">Manoj Choudhary V</strong>. I build autonomous AI workflows, multi-agent systems with shared memory, and scalable full-stack applications.
+      </p>
+
+      <!-- Quick CTA Row -->
+      <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+        <a href="#ask-ai" class="px-6 py-3 rounded-xl text-sm font-bold bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white shadow-lg shadow-indigo-500/25 transition flex items-center gap-2">
+          <span>✨</span> Chat with My AI Twin
+        </a>
+        <a href="#projects" class="px-6 py-3 rounded-xl text-sm font-bold glass text-slate-200 hover:text-white hover:border-slate-600 transition">
+          Explore Projects
+        </a>
+      </div>
+
+      <!-- Quick Social Pill Icons -->
+      <div class="flex items-center gap-4 pt-4 text-xs font-semibold text-slate-400">
+        <a href="https://linkedin.com/in/manoj-choudhary-v" target="_blank" class="hover:text-indigo-400 transition">LinkedIn</a>
+        <span>•</span>
+        <a href="https://leetcode.com/u/manoj_19v/" target="_blank" class="hover:text-indigo-400 transition">LeetCode (@manoj_19v)</a>
+        <span>•</span>
+        <a href="https://kaggle.com/manojchoudharyv" target="_blank" class="hover:text-indigo-400 transition">Kaggle</a>
+        <span>•</span>
+        <a href="https://github.com/manojvenaram" target="_blank" class="hover:text-indigo-400 transition">GitHub (490+ Contributions)</a>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE AI COMPANION SECTION -->
+    <section id="ask-ai" class="space-y-4 scroll-mt-24">
+      <div class="text-center space-y-1">
+        <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">Interactive AI Powered by Meko Knowledge</span>
+        <h2 class="text-2xl md:text-3xl font-black text-white">Ask Manoj AI Anything</h2>
+        <p class="text-xs text-slate-400">Talk to my virtual twin about my background, skills, projects, and hackathon work.</p>
+      </div>
+
+      <div class="glass rounded-2xl p-6 glow-indigo max-w-3xl mx-auto space-y-4">
+        <!-- Preset Prompt Pills -->
+        <div class="flex flex-wrap gap-2 text-xs">
+          <button onclick="askPrompt('Tell me about OmniResolve and your ContextCon hackathon project.')" class="px-3 py-1.5 rounded-lg bg-indigo-500/15 hover:bg-indigo-500/25 text-indigo-300 border border-indigo-500/30 transition">
+            🚀 Tell me about OmniResolve
+          </button>
+          <button onclick="askPrompt('What are Manoj\'s primary technical skills and tech stack?')" class="px-3 py-1.5 rounded-lg bg-purple-500/15 hover:bg-purple-500/25 text-purple-300 border border-purple-500/30 transition">
+            🛠️ What are Manoj's top skills?
+          </button>
+          <button onclick="askPrompt('Explain the Organic Growth Report & AI Chatbot Dashboard.')" class="px-3 py-1.5 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 border border-emerald-500/30 transition">
+            📊 Organic Growth Report project
+          </button>
+          <button onclick="askPrompt('How can I contact Manoj for hiring or collaboration?')" class="px-3 py-1.5 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 transition">
+            📬 How do I contact Manoj?
+          </button>
+        </div>
+
+        <!-- Chat History Stream -->
+        <div id="chatHistory" class="space-y-3 min-h-[160px] max-h-[300px] overflow-y-auto custom-scroll pr-2 text-xs">
+          <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300 flex items-start gap-3">
+            <span class="w-6 h-6 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">AI</span>
+            <div>
+              <p class="font-bold text-white mb-0.5">Manoj AI Assistant</p>
+              <p>Hi! I'm Manoj's interactive AI assistant. Ask me anything about his projects, coding style, hackathon builds, or experience!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input Bar -->
+        <form onsubmit="handleChatSubmit(event)" class="flex gap-2">
+          <input id="chatInput" type="text" placeholder="Ask about Manoj's projects, skills, or background..." class="flex-1 bg-slate-900/80 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500 transition placeholder:text-slate-500" />
+          <button type="submit" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition shrink-0 flex items-center gap-1.5 shadow">
+            Send <span>&rarr;</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SECTION -->
+    <section id="projects" class="space-y-6 scroll-mt-24">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-2">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">Featured Portfolio Work</span>
+          <h2 class="text-2xl md:text-3xl font-black text-white mt-1">Highlighted Projects</h2>
+        </div>
+        <p class="text-xs text-slate-400">Built with production-grade architectures and clean documentation.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Project 1: OmniResolve -->
+        <div class="glass-card rounded-2xl p-6 space-y-4 relative group">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">
+              ContextCon 2026 // YugabyteDB & Meko
+            </span>
+            <span class="text-xs text-slate-500 font-mono">2026</span>
+          </div>
+
+          <h3 class="text-xl font-bold text-white group-hover:text-indigo-400 transition">
+            OmniResolve: Never Solve It Twice
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Autonomous multi-agent enterprise support pipeline powered by the Meko Context Engine and YugabyteDB. Features Tier-1 Triage, Tier-2 Specialist diagnostics, and Human-in-the-Loop memory promotion.
+          </p>
+
+          <div class="p-3 rounded-lg bg-black/40 border border-slate-800 grid grid-cols-3 gap-2 text-center text-xs font-mono">
+            <div><span class="text-emerald-400 font-bold block text-sm">-80.2%</span><span class="text-[10px] text-slate-500">Tokens</span></div>
+            <div><span class="text-cyan-400 font-bold block text-sm">395ms</span><span class="text-[10px] text-slate-500">Repeat Latency</span></div>
+            <div><span class="text-purple-400 font-bold block text-sm">15.6x</span><span class="text-[10px] text-slate-500">Efficiency</span></div>
+          </div>
+
+          <div class="flex items-center justify-between pt-2 border-t border-slate-800 text-xs">
+            <div class="flex gap-2 text-slate-400 font-mono text-[11px]">
+              <span>TypeScript</span> • <span>Bun</span> • <span>YugabyteDB</span>
+            </div>
+            <a href="https://github.com/manojvenaram/OmniResolve-Meko" target="_blank" class="text-indigo-400 font-bold hover:underline flex items-center gap-1">
+              Source Code &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2: Organic Growth Report -->
+        <div class="glass-card rounded-2xl p-6 space-y-4 relative group">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              Full-Stack Analytics & AI
+            </span>
+            <span class="text-xs text-slate-500 font-mono">Java 17</span>
+          </div>
+
+          <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition">
+            Organic Growth Report & AI Chatbot
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            An intelligent analytics platform with a conversational AI assistant that queries, compares, and visualizes multi-year spreadsheet metrics in natural language with automated PDF report generation.
+          </p>
+
+          <div class="p-3 rounded-lg bg-black/40 border border-slate-800 space-y-1 text-xs">
+            <div class="flex items-center gap-2 text-slate-300">
+              <span class="text-emerald-400">✓</span> Conversational AI querying spreadsheet trends
+            </div>
+            <div class="flex items-center gap-2 text-slate-300">
+              <span class="text-emerald-400">✓</span> Dynamic multi-site comparisons with Chart.js
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between pt-2 border-t border-slate-800 text-xs">
+            <div class="flex gap-2 text-slate-400 font-mono text-[11px]">
+              <span>Java 17</span> • <span>Spring Boot 3.2.5</span> • <span>Chart.js</span>
+            </div>
+            <a href="https://github.com/manojvenaram" target="_blank" class="text-emerald-400 font-bold hover:underline flex items-center gap-1">
+              View Repository &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3: 8-Challenge Meko Omniverse -->
+        <div class="glass-card rounded-2xl p-6 space-y-4 relative group">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-purple-500/20 text-purple-400 border border-purple-500/30">
+              Multi-Domain Agent Suite
+            </span>
+            <span class="text-xs text-slate-500 font-mono">8 Challenges</span>
+          </div>
+
+          <h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition">
+            The Meko Omniverse Grand Suite
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            A comprehensive implementation of all 8 ContextCon challenges: Cross-tool Coding ADLC, 2,000-event Fraud ATO Detection, Cross-Cycle Marketing, Financial Life Events, Healthcare RBAC, and 2-Minute Auditability Cards.
+          </p>
+
+          <div class="flex items-center justify-between pt-2 border-t border-slate-800 text-xs">
+            <div class="flex gap-2 text-slate-400 font-mono text-[11px]">
+              <span>11/11 Tests Passing</span> • <span>Interactive Console</span>
+            </div>
+            <a href="https://github.com/manojvenaram/OmniResolve-Meko" target="_blank" class="text-purple-400 font-bold hover:underline flex items-center gap-1">
+              Explore Suite &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 4: Digital Logic & Hardware Systems -->
+        <div class="glass-card rounded-2xl p-6 space-y-4 relative group">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-amber-500/20 text-amber-400 border border-amber-500/30">
+              Hardware & Low-Level
+            </span>
+            <span class="text-xs text-slate-500 font-mono">Verilog HDL</span>
+          </div>
+
+          <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition">
+            Digital Logic & Shift Registers Design
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            FPGA and digital logic architectures authored in Verilog HDL. Explores register-transfer level (RTL) synthesis, clock-cycle timing constraints, and hardware verification testbenches.
+          </p>
+
+          <div class="flex items-center justify-between pt-2 border-t border-slate-800 text-xs">
+            <div class="flex gap-2 text-slate-400 font-mono text-[11px]">
+              <span>Verilog</span> • <span>RTL Simulation</span> • <span>Hardware</span>
+            </div>
+            <a href="https://github.com/manojvenaram" target="_blank" class="text-amber-400 font-bold hover:underline flex items-center gap-1">
+              Explore HDL &rarr;
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS SECTION -->
+    <section id="skills" class="space-y-6 scroll-mt-24">
+      <div class="text-center space-y-1">
+        <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">Core Competencies</span>
+        <h2 class="text-2xl md:text-3xl font-black text-white">Technical Arsenal</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
+        <div class="glass-card p-5 rounded-2xl space-y-3">
+          <div class="font-bold text-sm text-indigo-400 flex items-center gap-2"><span>🤖</span> AI & Agentic Systems</div>
+          <ul class="space-y-1.5 text-slate-300">
+            <li>• Meko Context Engine</li>
+            <li>• Model Context Protocol (MCP)</li>
+            <li>• Multi-Agent Coordination</li>
+            <li>• Decision Traces & Tracing</li>
+            <li>• Prompt Engineering & RAG</li>
+          </ul>
+        </div>
+        <div class="glass-card p-5 rounded-2xl space-y-3">
+          <div class="font-bold text-sm text-emerald-400 flex items-center gap-2"><span>💻</span> Languages</div>
+          <ul class="space-y-1.5 text-slate-300">
+            <li>• Python (3.11 / 3.12)</li>
+            <li>• Java (17 / 21)</li>
+            <li>• TypeScript / JavaScript</li>
+            <li>• SQL & PostgreSQL</li>
+            <li>• Verilog HDL</li>
+          </ul>
+        </div>
+        <div class="glass-card p-5 rounded-2xl space-y-3">
+          <div class="font-bold text-sm text-purple-400 flex items-center gap-2"><span>⚡</span> Frameworks & Runtimes</div>
+          <ul class="space-y-1.5 text-slate-300">
+            <li>• Spring Boot 3</li>
+            <li>• Bun Runtime</li>
+            <li>• Node.js & Fastify</li>
+            <li>• Tailwind CSS & React</li>
+            <li>• Chart.js Visualizations</li>
+          </ul>
+        </div>
+        <div class="glass-card p-5 rounded-2xl space-y-3">
+          <div class="font-bold text-sm text-amber-400 flex items-center gap-2"><span>🗄️</span> Data & Infra</div>
+          <ul class="space-y-1.5 text-slate-300">
+            <li>• YugabyteDB Distributed SQL</li>
+            <li>• PostgreSQL & pgvector</li>
+            <li>• Docker & Linux</li>
+            <li>• Git & GitHub CI/CD</li>
+            <li>• Cloud Storage & S3</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE GITHUB METRICS -->
+    <section class="glass rounded-2xl p-6 text-center space-y-4">
+      <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400">Live GitHub Analytics (@manojvenaram)</h3>
+      <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+        <img src="https://github-readme-stats-fast.vercel.app/api?username=manojvenaram&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" alt="GitHub Stats" class="rounded-xl w-full md:w-1/2 max-w-md shadow-md" />
+        <img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=manojvenaram&layout=compact&theme=tokyonight&hide_border=true" alt="Top Languages" class="rounded-xl w-full md:w-1/2 max-w-md shadow-md" />
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="glass rounded-3xl p-8 md:p-12 text-center space-y-6 glow-purple">
+      <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-purple-500/20 text-purple-300 border border-purple-500/30">
+        Let's Build Together
+      </span>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white">Have a Project or Opportunity?</h2>
+      <p class="text-slate-400 text-sm max-w-lg mx-auto">
+        I'm actively seeking opportunities in AI engineering, agentic development, and distributed systems. Let's connect!
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+        <a href="https://linkedin.com/in/manoj-choudhary-v" target="_blank" class="px-6 py-3 rounded-xl font-bold text-xs bg-indigo-600 hover:bg-indigo-500 text-white transition flex items-center gap-2 shadow">
+          <span>💼</span> Connect on LinkedIn
+        </a>
+        <a href="https://github.com/manojvenaram" target="_blank" class="px-6 py-3 rounded-xl font-bold text-xs bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 transition flex items-center gap-2">
+          <span>🐙</span> GitHub (@manojvenaram)
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Interactive Client-Side AI Response Engine -->
+  <script>
+    const KNOWLEDGE = [
+      {
+        keywords: ['omni', 'omniresolve', 'hackathon', 'contextcon', 'meko', 'yugabyte'],
+        answer: "Manoj built **OmniResolve: Never Solve It Twice** for the ContextCon 2026 Hackathon (sponsored by YugabyteDB & Meko). It's an autonomous multi-agent support pipeline that stores resolved incident fixes into Meko collective memory. Repeat tickets are resolved in 1 turn with **-80.2% token reduction** and **15.6x efficiency**!"
+      },
+      {
+        keywords: ['skills', 'stack', 'languages', 'tech', 'python', 'java'],
+        answer: "Manoj's core technical stack includes: **Languages**: Python (3.11/3.12), Java 17, TypeScript, SQL, and Verilog HDL. **AI & Agents**: Meko Context Engine, Model Context Protocol (MCP), and Multi-Agent Orchestration. **Backend & Data**: Spring Boot 3, Bun, YugabyteDB, PostgreSQL, and Docker."
+      },
+      {
+        keywords: ['organic', 'growth', 'report', 'chatbot', 'spring'],
+        answer: "The **Organic Growth Report & AI Chatbot Dashboard** is Manoj's full-stack Java 17 + Spring Boot 3.2.5 platform. It integrates a conversational AI assistant that queries multi-year spreadsheet metrics in natural language, renders Chart.js visualizations, and automatically generates PDF reports."
+      },
+      {
+        keywords: ['contact', 'hire', 'email', 'linkedin', 'reach', 'connect'],
+        answer: "You can connect with Manoj directly on **LinkedIn** at [linkedin.com/in/manoj-choudhary-v](https://linkedin.com/in/manoj-choudhary-v) or check his code on **GitHub** at [github.com/manojvenaram](https://github.com/manojvenaram). He is actively open to AI engineering and developer roles!"
+      },
+      {
+        keywords: ['leetcode', 'algorithm', 'problem', 'competitive'],
+        answer: "Manoj actively practices problem-solving and algorithms on **LeetCode** under the profile **@manoj_19v**, as well as **Kaggle** (@manojchoudharyv) and **HackerRank**!"
+      }
+    ];
+
+    function askPrompt(question) {
+      document.getElementById('chatInput').value = question;
+      handleChatSubmit(new Event('submit'));
+    }
+
+    function handleChatSubmit(e) {
+      if (e) e.preventDefault();
+      const input = document.getElementById('chatInput');
+      const query = input.value.trim();
+      if (!query) return;
+
+      const history = document.getElementById('chatHistory');
+
+      // Append User message
+      history.innerHTML += \`
+        <div class="p-3 rounded-xl bg-indigo-600/20 border border-indigo-500/30 text-white ml-8 flex items-start gap-2 justify-end">
+          <p class="text-right">\${query}</p>
+          <span class="w-5 h-5 rounded-full bg-indigo-500 text-white flex items-center justify-center font-bold text-[9px] shrink-0">U</span>
+        </div>
+      \`;
+
+      input.value = '';
+
+      // Find matching knowledge
+      const lower = query.toLowerCase();
+      let matched = KNOWLEDGE.find(k => k.keywords.some(kw => lower.includes(kw)));
+      let answerText = matched 
+        ? matched.answer 
+        : "Manoj is an AI Engineer and Tech Enthusiast passionate about building intelligent agents, full-stack systems, and distributed databases like YugabyteDB. You can explore his code directly on his GitHub profile (@manojvenaram)!";
+
+      // Append AI response with typing simulation
+      setTimeout(() => {
+        history.innerHTML += \`
+          <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300 flex items-start gap-3">
+            <span class="w-6 h-6 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">AI</span>
+            <div>
+              <p class="font-bold text-white mb-0.5">Manoj AI Assistant</p>
+              <p class="leading-relaxed">\${answerText}</p>
+            </div>
+          </div>
+        \`;
+        history.scrollTop = history.scrollHeight;
+      }, 350);
+
+      history.scrollTop = history.scrollHeight;
+    }
+
+    // Particle Canvas Animation
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.radius = Math.random() * 1.5 + 0.5;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(99, 102, 241, 0.4)';
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 65; i++) {
+      particles.push(new Particle());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 110) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = 'rgba(147, 51, 234, ' + (0.15 * (1 - dist / 110)) + ')';
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+</html>
+
